@@ -1,3 +1,26 @@
+<?php
+if (isset($_REQUEST['nombre']) && isset(
+                $_REQUEST['email'])) {
+    //$header = es el valor del titulo del mensaje
+    //$para = el correo al que llegara el mensaje deve ser hotmail
+    //$mensaje = es la estructura de el resto del mensaje que se enviara
+    $header = 'From: ' . $_REQUEST['nombre'] . " \r\n";
+    $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+    $header .= "Mime-Version: 1.0 \r\n";
+    $header .= "Content-Type: text/plain";
+    $para = " lamontanabotanas@hotmail.com";
+    $asunto = 'Mensaje de Contacto de la pagina web';
+    $mensaje = "Este mensaje fue enviado por " . $_REQUEST['nombre']." \r\n";
+    $mensaje .= "Su e-mail es: " . $_REQUEST['email'] . " \r\n";
+    $mensaje .= "Mensaje extra " . $_REQUEST['mensaje'] . " \r\n";
+    $mensaje .= "Enviado el " . date('d/m/Y', time());
+    if (mail($para, $asunto, utf8_decode($mensaje))) {
+       
+    } else {
+        echo "No salio";
+    }
+}
+?>
 <html lang="en">
     <head>
         <title>Pistaches con ajo</title>
